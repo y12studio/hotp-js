@@ -56,7 +56,7 @@ function hotp(key, counter, format) {
         // count is the moving factor in OTP to be converted in bytes
         v = decimaltohex(count, 16);
         var decb = new Array();
-        lhex = Crypto.util.hexToBytes(v);
+        lhex = hexToBytes(v);
         for (var i = 0; i < lhex.length; i++) {
             decb[i] = String.fromCharCode(lhex[i]);
         }
@@ -81,7 +81,7 @@ function hotp(key, counter, format) {
 			for (var bytes = [], c = 0; c < hex.length; c += 2)
 				bytes.push(parseInt(hex.substr(c, 2), 16));
 			return bytes;
-		}
+   }
 		
 
     function truncatedvalue(h, p) {
