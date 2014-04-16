@@ -76,11 +76,11 @@ function hotp(key, counter, format) {
         return hex;
     }
     
-
+    // https://code.google.com/p/crypto-js/source/browse/tags/2.0/src/Crypto.js#67
     function hexToBytes(hex) {
-			for (var bytes = [], c = 0; c < hex.length; c += 2)
-				bytes.push(parseInt(hex.substr(c, 2), 16));
-			return bytes;
+	for (var bytes = [], c = 0; c < hex.length; c += 2)
+		bytes.push(parseInt(hex.substr(c, 2), 16));
+	return bytes;
    }
 		
 
@@ -95,8 +95,7 @@ function hotp(key, counter, format) {
     }
     
     var hash = CryptoJS.HmacSHA1(CryptoJS.enc.Latin1.parse(hotp_movingfactortohex(counter)), CryptoJS.enc.Hex.parse(key));
-
-		var hmacBytes = hash.toString(CryptoJS.enc.Hex);
+    var hmacBytes = hash.toString(CryptoJS.enc.Hex);
 
     //var hmacBytes = Crypto.HMAC(Crypto.SHA1, Crypto.charenc.Binary.stringToBytes((hotp_movingfactortohex(counter))), Crypto.charenc.Binary.stringToBytes(hotp_hexkeytobytestream(key)));
 
